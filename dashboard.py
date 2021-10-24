@@ -6,11 +6,14 @@ import pandas as pd
 import plotly.express as px # plotly v 4.7.1
 import plotly.graph_objects as go
 import numpy as np
+import os
 
+cwd = os.getcwd()
+path = cwd + '/data/customer_dataset.csv'
 external_stylesheets = [dbc.themes.DARKLY]
 app = dash.Dash(__name__, title='Interactive Model Dashboard', external_stylesheets=[external_stylesheets])
 
-df = pd.read_csv(r'C:\Users\diysu\OneDrive\Documents\VS Code\Guided Project\Interactive Machine Learning Dashboards using Plotly Dash\data\customer_dataset.csv')
+df = pd.read_csv(path)
 features = ['Fresh', 'Milk', 'Grocery', 'Frozen', 'Detergents_Paper', 'Delicatessen']
 models = ['PCA', 'UMAP', 'AE', 'VAE']
 df_average = df[features].mean()
